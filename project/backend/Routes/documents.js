@@ -7,7 +7,7 @@ let data = {
     "data2",
     "data3"
   ],
-  "kate@gmai.com": [
+  "k@gmail.com": [
     "dane1",
     "dane2",
     "dane3"
