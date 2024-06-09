@@ -1,0 +1,32 @@
+.nav {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color:rgb(190, 195, 245);
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    color: rgb(65, 70, 145);
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 1000; 
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+
+.navButton {
+    background-color:rgb(190, 195, 245);
+    color: rgb(65, 70, 145);
+    margin: 0 10px; 
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+}
+

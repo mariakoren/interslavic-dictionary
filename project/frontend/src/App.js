@@ -1,11 +1,21 @@
-import Protected from "./components/Protected.js";
-import Public from "./components/Public.js";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import Home from "./pages/Home/Home.js";
+import Personal from "./pages/Personal/Personal.js";
 
-import useAuth from "./hooks/useAuth.js";
 
 function App() {
-  const [isLogin, token] = useAuth();
-  return isLogin ? <Protected token={token}/> : <Public />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<Personal/>}/>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
