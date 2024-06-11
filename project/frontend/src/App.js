@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home/Home.js";
 import Personal from "./pages/Personal/Personal.js";
-
+import ListOfWords from "./pages/ListOfWords/ListOfWords.js";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Personal/>}/>
+        <Route path="/listofwords" element={<ListOfWords/>}/>
       </Routes>
     </BrowserRouter>
   );

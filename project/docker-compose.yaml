@@ -18,3 +18,13 @@ services:
       - 9090:8080
     command:
       - start-dev
+  mongo:
+    image: mongo:latest
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: admin
+    #   MONGO_INITDB_ROOT_PASSWORD: admin
+    #   MONGO_INITDB_DATABASE: languages
+    ports:
+      - 27017:27017
+    # volumes:
+    #   - ./init-mongo.js:/docker-entrypoint-initdb.d/db.js

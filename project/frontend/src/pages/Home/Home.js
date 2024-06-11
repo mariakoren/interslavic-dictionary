@@ -10,7 +10,7 @@ const Home = () => {
     };
 
     const goToList = () => {
-        navigate('/wordlist'); 
+        navigate('/listofwords'); 
     };
 
     const goToReviews = () => {
