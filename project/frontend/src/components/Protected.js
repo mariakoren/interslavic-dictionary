@@ -13,16 +13,25 @@ const Protected = ({token}) => {
       }
     }
 
+    // axios
+    // .get("http://localhost:5000/documents", config)
+    // .then(res => setData(res.data))
+    // .catch(err => console.error(err))
+
     axios
-    .get("http://localhost:5000/documents", config)
+    .get("http://localhost:5000/userwords", config)
     .then(res => setData(res.data))
-    .catch(err => console.error(err))
+    .catch(err => console.log(err))
   });
 
   return data ? (
   <>
+    Zapisane słowa:
     {data.map((rec, i) => 
-      (<h3 key={i}>{rec}</h3>
+      ( <ul key={i} className="word-list">
+        <li className="word-item">Polski: {rec.polish}</li>
+        <li className="word-item">Międzysłowiański: {rec.interslavic}</li>
+      </ul>
 
       ))}
   </> ) : (

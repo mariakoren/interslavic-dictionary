@@ -15,9 +15,9 @@ export default async (req, res, next) => {
   });
   // console.log(decodedToken);
 
-  const { email, realm_access} = decodedToken;
-  console.log(realm_access.roles.includes("administrator"))
+  const { preferred_username, email, realm_access} = decodedToken;
+  // console.log(realm_access.roles.includes("administrator"))
 
-  req.user = email;
+  req.user = preferred_username;
   next();
 };

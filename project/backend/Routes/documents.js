@@ -2,12 +2,12 @@ import express from "express";
 const router = express.Router();
 
 let data = {
-  "maria.korenn@gmail.com": [
+  "maria": [
     "data1",
     "data2",
     "data3"
   ],
-  "k@gmail.com": [
+  "kate": [
     "dane1",
     "dane2",
     "dane3"
@@ -16,9 +16,9 @@ let data = {
 
 const getDocuments = async (req, res) => {
   try {
-    const email = req.user;
+    const username = req.user;
 
-    res.status(200).send(data[email]);
+    res.status(200).send(data[username]);
   } catch (err) {
     res.status(500).send(err);
   }

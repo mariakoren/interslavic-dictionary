@@ -18,6 +18,7 @@ const ListOfWords = () => {
           <ul key={i} className="word-list">
             <li className="word-item">Polski: {rec.polish}</li>
             <li className="word-item">Międzysłowiański: {rec.interslavic}</li>
+            {/* <button className="word-item">Zapisz</button> */}
           </ul>
         )}
         </> ) : (

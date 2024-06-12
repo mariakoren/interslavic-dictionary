@@ -1,0 +1,16 @@
+.word-list {
+    list-style: none;
+    background-color:rgb(190, 195, 245);
+    border: none;
+    border-radius: 15px;
+    width: fit-content;
+    margin: 1em auto;
+
+  }
+  
+  .word-item {
+    padding: 5px;
+    width: 200px;
+    color: rgb(65, 70, 145);
+  }
+  
