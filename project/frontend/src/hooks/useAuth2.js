@@ -17,8 +17,8 @@ const useAuth = () => {
         isRun.current = true;
 
         client
-            .init({ onLoad: "login-required" })
-            // .init({ onLoad: "check-sso" })
+            // .init({ onLoad: "login-required" })
+            .init({ onLoad: "check-sso" })
             .then((res) => {
                 setLogin(res);
                 setToken(client.token);
