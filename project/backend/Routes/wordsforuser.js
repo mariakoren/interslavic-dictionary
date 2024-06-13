@@ -8,7 +8,13 @@ const createWordforuser = async (req, res) => {
     // console.log(req.body);
     // console.log(req.query);
     // res.status(200).json("ok");
-    const newWord = new Wordsforuser(req.query);
+    const user = req.user;
+    const idWord = req.query.idWord;
+    const word = {
+        user: user,
+        idWord:idWord
+    }
+    const newWord = new Wordsforuser(word);
     try {
         const savedWord = await newWord.save();
         res.status(200).json(savedWord)
