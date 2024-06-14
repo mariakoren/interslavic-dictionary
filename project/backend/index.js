@@ -6,7 +6,7 @@ import documents from "./Routes/documents.js";
 import authenticate from "./Routes/authenticate.js";
 import listofwords from "./Routes/listofwords.js";
 import wordsforuser from "./Routes/wordsforuser.js";
-
+import reviews from "./Routes/reviews.js";
 
 const app = express();
 dotenv.config();
@@ -35,6 +35,7 @@ app.use(cors());
 app.use("/listofwords",  listofwords);
 app.use("/documents", authenticate, documents);
 app.use("/userwords", authenticate, wordsforuser);
+app.use("/reviews", reviews);
 // app.use("/userwords", wordsforuser);
 
 

@@ -1,0 +1,51 @@
+.container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    color: rgb(65, 70, 145);
+  }
+  
+  .form {
+    background-color: rgb(190, 195, 245);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  .textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(65, 70, 145);
+  }
+  
+  .button {
+    background-color: rgb(190, 195, 245);
+    color: rgb(65, 70, 145);
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+  }
+  
+  .review-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .review-item {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
