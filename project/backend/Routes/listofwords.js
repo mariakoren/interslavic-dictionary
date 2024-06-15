@@ -1,13 +1,11 @@
 import express from "express";
 import Words from "../models/words.js";
+import isAdmin from "./isAdmin.js";
 
 const router = express.Router();
 
 
 const createWord = async (req, res) => {
-    // console.log(req.body);
-    // console.log(req.query);
-    // res.status(200).json("ok");
     const newWord = new Words(req.query);
     try {
         const savedWord = await newWord.save();
@@ -40,7 +38,7 @@ const deleteWorld = async (req, res) => {
 }
 
 
-router.post("/", createWord);
+router.post("/", isAdmin, createWord);
 router.get("/", getListOfWords)
 router.delete("/", deleteWorld);
 export default router;

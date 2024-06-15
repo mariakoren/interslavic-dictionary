@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
-import documents from "./Routes/documents.js";
 import authenticate from "./Routes/authenticate.js";
 import listofwords from "./Routes/listofwords.js";
 import wordsforuser from "./Routes/wordsforuser.js";
@@ -33,10 +32,10 @@ const connect = async () => {
 app.use(cors());
 
 app.use("/listofwords",  listofwords);
-app.use("/documents", authenticate, documents);
-app.use("/userwords", authenticate, wordsforuser);
+app.use("/userwords", wordsforuser);
 app.use("/reviews", reviews);
-// app.use("/userwords", wordsforuser);
+
+
 
 
 

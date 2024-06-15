@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './listofwords.css';
+import './listofwords.css'; // Import stylizacji
 import useAuth from "../../hooks/useAuth2.js";
 
 const ListOfWords = () => {
@@ -37,12 +37,12 @@ const ListOfWords = () => {
                 <ul key={i} className="word-list">
                     <li className="word-item">Polski: {rec.polish}</li>
                     <li className="word-item">Międzysłowiański: {rec.interslavic}</li>
-                    {isLogin && <button className="word-item" onClick={() => writeWord(rec._id, token)}>Zapisz</button>}
+                    {isLogin && <button className="button" onClick={() => writeWord(rec._id, token)}>Zapisz</button>}
                 </ul>
             ))}
         </>
     ) : (
-        <div>Ładowanie listy słów...</div>
+        <div className="loading">Ładowanie listy słów...</div>
     );
 };
 

@@ -1,4 +1,4 @@
-import  { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Keycloak from "keycloak-js";
 
 const client = new Keycloak({
@@ -11,6 +11,7 @@ const useAuth = () => {
     const isRun = useRef(false);
     const [token, setToken] = useState(null);
     const [isLogin, setLogin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         if (isRun.current) return;
@@ -18,17 +19,21 @@ const useAuth = () => {
 
         client
             .init({ onLoad: "login-required" })
-            // .init({ onLoad: "check-sso" })
             .then((res) => {
                 setLogin(res);
                 setToken(client.token);
+
+                const roles = client.realmAccess?.roles || [];
+                if (roles.includes("administrator")) {
+                    setIsAdmin(true);
+                }
             })
             .catch(error => {
                 console.error("Error initializing Keycloak:", error);
             });
     }, []);
 
-    return [isLogin, token];
+    return [isLogin, token, isAdmin];
 };
 
 export default useAuth;

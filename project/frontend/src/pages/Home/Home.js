@@ -26,7 +26,7 @@ const Home = () => {
             </div>
 
             <div className="buttonContainer">
-                <button className="navButton" onClick={goToLogin}>Załoguj się</button>
+                <button className="navButton" onClick={goToLogin}>Moje słowa</button>
                 <button className="navButton" onClick={goToList}>Lista słów</button>
                 <button className="navButton" onClick={goToReviews}>Opinie</button>
             </div>

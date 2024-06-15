@@ -13,4 +13,20 @@
     width: 200px;
     color: rgb(65, 70, 145);
   }
+
+  .title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(65, 70, 145);
+    text-align: center;
+    margin-top: 1em;
+}
+
+.no-words {
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 1em;
+  color: gray;
+}
+
   

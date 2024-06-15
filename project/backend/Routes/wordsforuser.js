@@ -1,13 +1,13 @@
 import express from "express";
 import Wordsforuser from "../models/wordsforuser.js";
 import Words from "../models/words.js";
+
+import authenticate from "./authenticate.js";
+import isAdmin from "./isAdmin.js";
 const router = express.Router();
 
 
 const createWordforuser = async (req, res) => {
-    // console.log(req.body);
-    // console.log(req.query);
-    // res.status(200).json("ok");
     const user = req.user;
     const idWord = req.query.idWord;
     const word = {
@@ -25,9 +25,21 @@ const createWordforuser = async (req, res) => {
 
 const getListOfWordsforusers = async (req, res) => {
     try {
-        const words = await Wordsforuser.find(req.query)
-        res.status(200).json(words)
-    } catch(err){
+
+        const wordsForUsers = await Wordsforuser.find();
+        const wordIds = wordsForUsers.map(wordForUser => wordForUser.idWord);
+        const words = await Words.find({ _id: { $in: wordIds } });
+        const combinedData = wordsForUsers.map(wordForUser => {
+            const wordDetails = words.find(word => word._id.equals(wordForUser.idWord));
+            return {
+                _id: wordForUser._id,
+                user: wordForUser.user,
+                wordDetails: wordDetails ? wordDetails.toObject() : null
+            };
+        });
+
+        res.status(200).json(combinedData);
+    } catch (err) {
         res.status(500).json(err);
     }
 }
@@ -46,13 +58,9 @@ const getListOfWordsforuser = async (req, res) => {
 
 
 
-const deleteWorldforuser = async (req, res) => {
-
+const deleteWordforuser = async (req, res) => {
     try {
-       await Wordsforuser.findByIdAndDelete(
-            req.query.id
-            )
-
+       await Wordsforuser.findByIdAndDelete(req.query.id)
         res.status(200).json("Word has been deleted")
     } catch(err){
         res.status(500).json(err);
@@ -60,8 +68,8 @@ const deleteWorldforuser = async (req, res) => {
 }
 
 
-router.post("/", createWordforuser);
-router.get("/all", getListOfWordsforusers);
-router.get("/", getListOfWordsforuser)
-router.delete("/", deleteWorldforuser);
+router.post("/",  authenticate, createWordforuser);
+router.get("/all", isAdmin, getListOfWordsforusers);
+router.get("/",  authenticate, getListOfWordsforuser)
+router.delete("/",  isAdmin, deleteWordforuser);
 export default router;

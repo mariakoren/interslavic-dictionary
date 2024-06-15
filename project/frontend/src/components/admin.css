@@ -1,0 +1,42 @@
+.word-list {
+  list-style: none;
+  background-color: rgb(190, 195, 245);
+  border: none;
+  border-radius: 15px;
+  width: fit-content;
+  margin: 1em auto;
+}
+
+.word-item {
+  padding: 5px;
+  width: 200px;
+  color: rgb(65, 70, 145);
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: rgb(65, 70, 145);
+  text-align: center;
+  margin-top: 1em;
+}
+
+button {
+  background-color: rgb(65, 70, 145);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(50, 55, 120);
+}
+
+.no-words {
+  font-size: 1.2em;
+  text-align: center;
+  margin-top: 1em;
+  color: gray;
+}
