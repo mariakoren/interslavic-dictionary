@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 // import { useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import "./protected.css";
 
@@ -30,10 +31,18 @@ const Protected = ({token, client}) => {
     }
   }
 
+  // const handleClick = () => {
+  //   navigate('/');
+  // };
+
   return <>
   <div>
     <button onClick={handleLogout}>Wyloguj się</button>
   </div>
+  <div>
+        {/* <button onClick={handleClick}>Wróć na stronę domową</button> */}
+        <Link to="/">Homepage</Link>
+    </div>
   <div>
   {data ? (
   <>

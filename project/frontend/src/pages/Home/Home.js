@@ -9,10 +9,13 @@ const Home = () => {
 
     const goToLogin = () => {
         navigate('/login'); 
+        window.location.reload();
     };
 
     const goToList = () => {
         navigate('/listofwords'); 
+        window.location.reload();
+
     };
 
     const goToReviews = () => {
@@ -27,6 +30,7 @@ const Home = () => {
 
             <div className="buttonContainer">
                 <button className="navButton" onClick={goToLogin}>Moje słowa</button>
+                {/* <Link to="/login">Moje słowa</Link> */}
                 <button className="navButton" onClick={goToList}>Lista słów</button>
                 <button className="navButton" onClick={goToReviews}>Opinie</button>
             </div>

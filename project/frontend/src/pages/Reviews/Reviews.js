@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import './reviews.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const Reviews = () => {
   const [values, setValues] = useState({ content: '' });
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     fetchData();
@@ -38,7 +42,15 @@ const Reviews = () => {
     }
   };
 
+  const handleClick = () => {
+    navigate('/');
+  };
+
   return (
+   <>
+   <div>
+        <button onClick={handleClick}>Wróć na stronę domową</button>
+    </div>
     <div className="container">
       <form className="form">
         <div>
@@ -76,6 +88,7 @@ const Reviews = () => {
         )}
       </>
     </div>
+   </>
   );
 };
 
