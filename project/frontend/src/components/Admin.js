@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import './admin.css'; 
 
-const Admin = ({ token }) => {
+const Admin = ({ token, client }) => {
   const isRun = useRef(false);
   const [data, setData] = useState(null);
 
@@ -39,9 +39,19 @@ const Admin = ({ token }) => {
       })
       .catch(err => console.log(err));
   };
+
+  const handleLogout = () =>{
+    if (client) {
+      client.logout({ redirectUri: window.location.origin });
+    }
+  }
   
   return (
     <>
+      <div>
+    <button onClick={handleLogout}>Wyloguj się</button>
+  </div>
+      <div>
       <div className="title">Zapisane słowa dla wszystkich użytkowników:</div>
       {data && data.length > 0 ? (
         data.map((rec) => (
@@ -57,6 +67,7 @@ const Admin = ({ token }) => {
       ) : (
         <div className="no-words">Brak słów do wyświetlania</div>
       )}
+      </div>
     </>
   );
 };

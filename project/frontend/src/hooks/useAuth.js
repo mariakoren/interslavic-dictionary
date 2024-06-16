@@ -23,6 +23,7 @@ const useAuth = () => {
                 setLogin(res);
                 setToken(client.token);
 
+
                 const roles = client.realmAccess?.roles || [];
                 if (roles.includes("administrator")) {
                     setIsAdmin(true);
@@ -33,7 +34,7 @@ const useAuth = () => {
             });
     }, []);
 
-    return [isLogin, token, isAdmin];
+    return [isLogin, token, isAdmin, client];
 };
 
 export default useAuth;

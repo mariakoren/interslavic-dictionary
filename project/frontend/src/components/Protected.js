@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
+// import { useNavigate} from 'react-router-dom';
 import axios from "axios";
 import "./protected.css";
 
 
-const Protected = ({token}) => {
+const Protected = ({token, client}) => {
+  // const navigate = useNavigate();
   const isRun = useRef(false);
   const [data, setData] = useState(null);
+
   useEffect(()=>{
     if (isRun.current) return;
     isRun.current = true;
@@ -21,7 +24,18 @@ const Protected = ({token}) => {
     .catch(err => console.log(err))
   });
 
-  return data ? (
+  const handleLogout = () =>{
+    if (client) {
+      client.logout({ redirectUri: window.location.origin });
+    }
+  }
+
+  return <>
+  <div>
+    <button onClick={handleLogout}>Wyloguj się</button>
+  </div>
+  <div>
+  {data ? (
   <>
     <div className="title">Zapisane słowa:</div>
     {data && data.length > 0 ? (
@@ -37,7 +51,9 @@ const Protected = ({token}) => {
     )}
   </> ) : (
     <div>Protected</div>
-  );
+  )}
+  </div>
+  </>
 };
 
 export default Protected;
