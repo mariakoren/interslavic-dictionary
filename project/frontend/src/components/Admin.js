@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { Link } from 'react-router-dom';
 import './admin.css'; 
 
 const Admin = ({ token, client }) => {
@@ -48,9 +49,16 @@ const Admin = ({ token, client }) => {
   
   return (
     <>
+
       <div>
     <button onClick={handleLogout}>Wyloguj się</button>
   </div>
+
+  <div>
+        {/* <button onClick={handleClick}>Wróć na stronę domową</button> */}
+        <Link to="/">Homepage</Link>
+    </div>
+
       <div>
       <div className="title">Zapisane słowa dla wszystkich użytkowników:</div>
       {data && data.length > 0 ? (
