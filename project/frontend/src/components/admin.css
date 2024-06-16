@@ -1,3 +1,7 @@
+.container {
+  display: flex;
+}
+
 .word-list {
   list-style: none;
   background-color: rgb(190, 195, 245);
@@ -5,6 +9,7 @@
   border-radius: 15px;
   width: fit-content;
   margin: 1em auto;
+  padding: 0;
 }
 
 .word-item {
@@ -19,6 +24,7 @@
   color: rgb(65, 70, 145);
   text-align: center;
   margin-top: 1em;
+  margin-bottom: 10px;
 }
 
 button {
@@ -39,4 +45,28 @@ button:hover {
   text-align: center;
   margin-top: 1em;
   color: gray;
+}
+
+.header-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px; 
+}
+
+.header-container > * {
+  margin-bottom: 10px; 
+}
+
+.words-container {
+  flex: 3;
+  margin-top: 0;
+}
+
+.word-list {
+  margin-bottom: 10px; 
+}
+.word-item {
+  margin-bottom: 5px; 
 }

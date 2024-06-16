@@ -1,6 +1,7 @@
-import axios from "axios";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import AddWord from "./addWord.js";
 import './admin.css'; 
 
 const Admin = ({ token, client }) => {
@@ -46,37 +47,35 @@ const Admin = ({ token, client }) => {
       client.logout({ redirectUri: window.location.origin });
     }
   }
-  
+
   return (
-    <>
-
-      <div>
-    <button onClick={handleLogout}>Wyloguj się</button>
-  </div>
-
-  <div>
-        {/* <button onClick={handleClick}>Wróć na stronę domową</button> */}
-        <Link to="/">Homepage</Link>
-    </div>
-
-      <div>
-      <div className="title">Zapisane słowa dla wszystkich użytkowników:</div>
-      {data && data.length > 0 ? (
-        data.map((rec) => (
-          <ul key={rec._id} className="word-list">
-            <li className="word-item">Polski: {rec.wordDetails.polish}</li>
-            <li className="word-item">Międzysłowiański: {rec.wordDetails.interslavic}</li>
-            <li className="word-item">Username: {rec.user}</li>
-            <li className="word-item">
-              <button onClick={() => handleDelete(rec._id)}>Usuń</button>
-            </li>
-          </ul>
-        ))
-      ) : (
-        <div className="no-words">Brak słów do wyświetlania</div>
-      )}
+    <div className="container">
+      <div className="header-container">
+        <button onClick={handleLogout}>Wyloguj się</button>
+        <Link to="/" className="nav-link">Homepage</Link>
+        <div className="add-word">
+          <AddWord token={token} />
+        </div>
       </div>
-    </>
+
+      <div className="words-container">
+        <div className="title">Zapisane słowa dla wszystkich użytkowników:</div>
+        {data && data.length > 0 ? (
+          data.map((rec) => (
+            <ul key={rec._id} className="word-list">
+              <li className="word-item">Polski: {rec.wordDetails.polish}</li>
+              <li className="word-item">Międzysłowiański: {rec.wordDetails.interslavic}</li>
+              <li className="word-item">Username: {rec.user}</li>
+              <li className="word-item">
+                <button onClick={() => handleDelete(rec._id)}>Usuń</button>
+              </li>
+            </ul>
+          ))
+        ) : (
+          <div className="no-words">Brak słów do wyświetlania</div>
+        )}
+      </div>
+    </div>
   );
 };
 
