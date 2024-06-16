@@ -51,10 +51,10 @@ const Reviews = () => {
    <div>
         <button onClick={handleClick}>Wróć na stronę domową</button>
     </div>
-    <div className="container">
-      <form className="form">
+    <div className="container-review">
+      <form className="form-review">
         <div>
-          <label className="label">Treść opinii:</label>
+          <label className="label-review">Treść opinii:</label>
           <textarea
             name="content"
             value={values.content}

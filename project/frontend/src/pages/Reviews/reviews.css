@@ -1,10 +1,10 @@
-.container {
+.container-review {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 20px;
     color: rgb(65, 70, 145);
   }
   
-  .form {
+  .form-review {
     background-color: rgb(190, 195, 245);
     padding: 20px;
     border-radius: 10px;
@@ -12,7 +12,7 @@
     margin-bottom: 20px;
   }
   
-  .label {
+  .label-review {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
