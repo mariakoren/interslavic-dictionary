@@ -1,5 +1,6 @@
 import express from "express";
 import Reviews from "../models/reviews.js";
+import isAdmin from "./isAdmin.js";
 
 const router = express.Router();
 
@@ -37,6 +38,6 @@ const deleteReview = async (req, res) => {
 
 router.post("/", createReview);
 router.get("/", getReviews);
-router.delete("/", deleteReview);
+router.delete("/", isAdmin, deleteReview);
 
 export default router;

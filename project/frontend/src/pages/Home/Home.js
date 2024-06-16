@@ -15,11 +15,11 @@ const Home = () => {
     const goToList = () => {
         navigate('/listofwords'); 
         window.location.reload();
-
     };
 
     const goToReviews = () => {
         navigate('/reviews'); 
+        window.location.reload();
     };
 
     return (

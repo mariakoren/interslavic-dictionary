@@ -2,17 +2,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import './reviews.css';
 import { useNavigate } from 'react-router-dom';
+import useAuth from "../../hooks/useAuth2.js";
 
 
 const Reviews = () => {
   const [values, setValues] = useState({ content: '' });
   const [data, setData] = useState([]);
+  const [isLogin, token, isAdmin] = useAuth();
   const navigate = useNavigate();
-
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const fetchData = async () => {
     try {
@@ -22,6 +19,9 @@ const Reviews = () => {
       console.error(err);
     }
   };
+
+ 
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,6 +45,26 @@ const Reviews = () => {
   const handleClick = () => {
     navigate('/');
   };
+
+  const handleDelete = (id) => {
+    const config = {
+      headers: {
+        authorization: `Bearer ${token}`
+      }
+    };
+
+    axios
+    .delete(`http://localhost:5000/reviews?id=${id}`, config)
+    .then(res => {
+      console.log('Review deleted', res.data)
+      fetchData();
+    })
+    .catch(err => console.log(err));
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   return (
    <>
@@ -75,10 +95,11 @@ const Reviews = () => {
       <>
         {data && data.length > 0 ? (
           <ul className="review-list">
-            {data.map((dane) => (
-              <li key={dane._id} className="review-item">
+            {data.map((rec) => (
+              <li key={rec._id} className="review-item">
                 <div>
-                  <p>{dane.content}</p>
+                  <p>{rec.content}</p>
+                  {isAdmin && <button className="button" onClick={() => handleDelete(rec._id)}>Usuń</button>}
                 </div>
               </li>
             ))}

@@ -48,7 +48,7 @@ const ListOfWords = () => {
                 fetchData();
             })
             .catch(err => {
-                console.error('Error saving word:', err);
+                console.error('Error deleting word:', err);
             });
     };
 
