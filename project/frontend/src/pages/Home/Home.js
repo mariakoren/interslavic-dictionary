@@ -34,14 +34,6 @@ const Home = () => {
                 <button className="navButton" onClick={goToList}>Lista słów</button>
                 <button className="navButton" onClick={goToReviews}>Opinie</button>
             </div>
-
-            {/* <div>
-            {isLogin ? (
-                <p>Logged in with token: {token}</p>
-            ) : (
-                <p>Not logged in</p>
-            )}
-        </div> */}
         </div>
     );
 }

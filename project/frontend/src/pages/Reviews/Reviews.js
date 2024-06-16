@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import './reviews.css';
 import { useNavigate } from 'react-router-dom';
 import useAuth from "../../hooks/useAuth2.js";
@@ -11,14 +11,12 @@ const Reviews = () => {
   const [isLogin, token, isAdmin] = useAuth();
   const navigate = useNavigate();
 
-  const fetchData = async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/reviews");
-      setData(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  const fetchData = useCallback( () => {
+    
+    axios.get("http://localhost:5000/reviews")
+    .then(res => setData(res.data))
+    .catch (err => console.error(err))
+    }, []);
 
  
 
@@ -31,15 +29,15 @@ const Reviews = () => {
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit =  () => {
     const queryString = new URLSearchParams(values).toString();
-    try {
-      const res = await axios.post(`http://localhost:5000/reviews?${queryString}`);
+    axios
+    .post(`http://localhost:5000/reviews?${queryString}`)
+    .then(res => {
       setData([...data, res.data]);
       setValues({ content: '' });
-    } catch (err) {
-      console.error(err);
-    }
+    })
+    .catch(err => console.error(err))
   };
 
   const handleClick = () => {
