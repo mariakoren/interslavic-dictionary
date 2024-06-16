@@ -19,6 +19,7 @@ const AddWord = ({ token }) => {
       )
       .then(() => {
         setValues({ polish: '', interslavic: '' });
+        alert("Słowo dodane!")
       })
       .catch(err => console.log(err));
   };
@@ -31,15 +32,15 @@ const AddWord = ({ token }) => {
           type="text"
           value={values.polish}
           onChange={(e) => setValues({ ...values, polish: e.target.value })}
-          placeholder="Polish"
+          placeholder="Polski"
         />
         <input
           type="text"
           value={values.interslavic}
           onChange={(e) => setValues({ ...values, interslavic: e.target.value })}
-          placeholder="Interslavic"
+          placeholder="Międzysłowiański"
         />
-        <button type="submit">Submit</button>
+        <button type="submit">Dodaj słowo</button>
       </form>
     </div>
   );

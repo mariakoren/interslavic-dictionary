@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import AddWord from "./addWord.js";
 import './admin.css'; 
@@ -7,7 +8,7 @@ import './admin.css';
 const Admin = ({ token, client }) => {
   const isRun = useRef(false);
   const [data, setData] = useState(null);
-
+  const navigate = useNavigate();
   const fetchData = useCallback(() => {
     const config = {
       headers: {
@@ -46,13 +47,19 @@ const Admin = ({ token, client }) => {
     if (client) {
       client.logout({ redirectUri: window.location.origin });
     }
+
   }
+
+  const handleClick = () => {
+    navigate('/');
+  };
 
   return (
     <div className="container">
       <div className="header-container">
         <button onClick={handleLogout}>Wyloguj się</button>
-        <Link to="/" className="nav-link">Homepage</Link>
+        {/* <Link to="/" className="nav-link">Homepage</Link> */}
+        <button onClick={handleClick}>Wróć na stronę domową</button>
         <div className="add-word">
           <AddWord token={token} />
         </div>
