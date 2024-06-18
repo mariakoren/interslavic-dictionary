@@ -21,6 +21,7 @@ const Protected = ({token, client}) => {
     
     axios
     .get("http://localhost:5000/userwords", config)
+    // .get("http://backend:5000/userwords", config)
     .then(res => setData(res.data))
     .catch(err => console.log(err))
   });

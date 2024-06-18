@@ -14,6 +14,7 @@ const Reviews = () => {
   const fetchData = useCallback( () => {
     
     axios.get("http://localhost:5000/reviews")
+    // axios.get("http://backend:5000/reviews")
     .then(res => setData(res.data))
     .catch (err => console.error(err))
     }, []);
@@ -33,6 +34,7 @@ const Reviews = () => {
     const queryString = new URLSearchParams(values).toString();
     axios
     .post(`http://localhost:5000/reviews?${queryString}`)
+    // .post(`http://backend:5000/reviews?${queryString}`)
     .then(res => {
       setData([...data, res.data]);
       setValues({ content: '' });
@@ -53,6 +55,7 @@ const Reviews = () => {
 
     axios
     .delete(`http://localhost:5000/reviews?id=${id}`, config)
+    // .delete(`http://backend:5000/reviews?id=${id}`, config)
     .then(res => {
       console.log('Review deleted', res.data)
       fetchData();

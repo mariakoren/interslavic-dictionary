@@ -12,17 +12,21 @@ dotenv.config();
 const PORT = 5000;
 
 const connect = async () => {
-    try {
-      await mongoose.connect('mongodb://localhost:27017/languages', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-      });
-      console.log("Connected to MongoDB on Docker");
-    } catch (error) {
-      console.error("Error connecting to MongoDB:", error.message);
-      throw error;
-    }
-  };
+  const mongoURI = process.env.MONGO_URI || 'mongodb://mongo:27017/languages';
+
+  try {
+    // await mongoose.connect(mongoURI, {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true
+    // });
+    await mongoose.connect(mongoURI);
+    console.log("Connected to MongoDB on Docker");
+  } catch (error) {
+    console.error("Error connecting to MongoDB:", error.message);
+    console.error("Stack Trace:", error.stack);
+    process.exit(1);
+  }
+};
   
   mongoose.connection.on("disconnected", () => {
     console.log("MongoDB disconnected");

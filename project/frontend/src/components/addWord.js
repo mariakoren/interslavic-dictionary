@@ -15,6 +15,7 @@ const AddWord = ({ token }) => {
     axios
       .post(
         `http://localhost:5000/listofwords?polish=${values.polish}&interslavic=${values.interslavic}`, {},
+        // `http://backend:5000/listofwords?polish=${values.polish}&interslavic=${values.interslavic}`, {},
         config
       )
       .then(() => {

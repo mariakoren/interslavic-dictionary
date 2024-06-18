@@ -18,6 +18,7 @@ const Admin = ({ token, client }) => {
 
     axios
       .get("http://localhost:5000/userwords/all", config)
+      // .get("http://backend:5000/userwords/all", config)
       .then(res => setData(res.data))
       .catch(err => console.log(err));
   }, [token]);
@@ -37,6 +38,7 @@ const Admin = ({ token, client }) => {
 
     axios
       .delete(`http://localhost:5000/userwords?id=${id}`, config)
+      // .delete(`http://backend:5000/userwords?id=${id}`, config)
       .then(() => {
         fetchData();
       })
