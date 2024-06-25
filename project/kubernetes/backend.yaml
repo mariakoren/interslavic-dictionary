@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: backend
-  replicas: 1
+  # replicas: 1
   template:
     metadata:
       labels:
@@ -20,6 +20,10 @@ spec:
               value: "mongodb://mongo:27017/languages"
           ports:
             - containerPort: 5000
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "0.1"
 ---
 apiVersion: v1
 kind: Service
@@ -33,4 +37,22 @@ spec:
     - protocol: TCP
       port: 5000
       targetPort: 5000
-
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: backend
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 10
