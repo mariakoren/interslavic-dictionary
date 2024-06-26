@@ -12,7 +12,6 @@ const ListOfWords = () => {
     const fetchData = useCallback(() => {
         axios
             .get("http://localhost:5000/listofwords")
-            // .get("http://backend:5000/listofwords")
             .then(res => setData(res.data))
             .catch(err => console.error(err));
     }, [])
@@ -26,7 +25,6 @@ const ListOfWords = () => {
 
         axios
             .post(`http://localhost:5000/userwords?idWord=${idWord}`, {}, config)
-            // .post(`http://backend:5000/userwords?idWord=${idWord}`, {}, config)
             .then(response => {
                 console.log('Word saved:', response.data);
                 alert("Słowo zapisane!")
@@ -45,7 +43,6 @@ const ListOfWords = () => {
 
         axios
             .delete(`http://localhost:5000/listofwords?id=${idWord}`,  config)
-            // .delete(`http://backend:5000/listofwords?id=${idWord}`,  config)
             .then(response => {
                 console.log('Word deleted:', response.data);
                 fetchData();

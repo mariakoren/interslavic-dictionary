@@ -38,7 +38,6 @@ const Admin = ({ token, client }) => {
 
     axios
       .delete(`http://localhost:5000/userwords?id=${id}`, config)
-      // .delete(`http://backend:5000/userwords?id=${id}`, config)
       .then(() => {
         fetchData();
       })
@@ -60,7 +59,6 @@ const Admin = ({ token, client }) => {
     <div className="container">
       <div className="header-container">
         <button onClick={handleLogout}>Wyloguj się</button>
-        {/* <Link to="/" className="nav-link">Homepage</Link> */}
         <button onClick={handleClick}>Wróć na stronę domową</button>
         <div className="add-word">
           <AddWord token={token} />

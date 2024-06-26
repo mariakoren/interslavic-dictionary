@@ -20,7 +20,7 @@ const connect = async () => {
     //   useUnifiedTopology: true
     // });
     await mongoose.connect(mongoURI);
-    console.log("Connected to MongoDB on Docker");
+    console.log("Connected to MongoDB");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error.message);
     console.error("Stack Trace:", error.stack);

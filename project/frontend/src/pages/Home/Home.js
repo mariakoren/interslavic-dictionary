@@ -1,10 +1,8 @@
 import React from 'react';
 import { useNavigate} from 'react-router-dom';
 import './home.css';
-// import {useAuth} from "../../context/AuthContext.js";
 
 const Home = () => {
-    // const { isLogin, token } = useAuth();
     const navigate = useNavigate();
 
     const goToLogin = () => {
@@ -30,7 +28,6 @@ const Home = () => {
 
             <div className="buttonContainer">
                 <button className="navButton" onClick={goToLogin}>Moje słowa</button>
-                {/* <Link to="/login">Moje słowa</Link> */}
                 <button className="navButton" onClick={goToList}>Lista słów</button>
                 <button className="navButton" onClick={goToReviews}>Opinie</button>
             </div>
