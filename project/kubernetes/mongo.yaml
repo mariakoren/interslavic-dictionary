@@ -68,7 +68,7 @@ spec:
       port: 27017
       targetPort: 27017
 ---
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: mongo
@@ -79,4 +79,10 @@ spec:
     name: mongo
   minReplicas: 1
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 80
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50

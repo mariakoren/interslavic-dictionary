@@ -34,6 +34,10 @@ spec:
               value: "pdb"
           ports:
             - containerPort: 5432
+          resources:
+            limits:
+              memory: "1Gi"
+              cpu: "1"
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgres-storage
@@ -53,7 +57,7 @@ spec:
     requests:
       storage: 10Gi
 ---
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: postgres
@@ -64,4 +68,10 @@ spec:
     name: postgres
   minReplicas: 1
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 80
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
