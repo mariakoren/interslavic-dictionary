@@ -14,6 +14,8 @@ If you are logged in as an admin, you will have additional privileges. As an adm
 
 Go to the `kubernetes` folder and run the command `kubectl apply -f .`
 
+After it aplication would be avaible on address: `http://localhost:3000`
+
 ### Visuals 
 
 #### Home page
